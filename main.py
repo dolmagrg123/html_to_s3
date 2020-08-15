@@ -1,4 +1,4 @@
-# import boto3
+import boto3
 
 class HtmlDocument:
     #that lets you initialize some HTML for a new document.
@@ -29,18 +29,23 @@ class HtmlMananger:
 
         
     def save_html_file(self):
-        f = open('dolma.html','w')
+        f = open('hello.html','w')
         f.write(self.document.content)
         f.close()
 
 
 class AWSmanager:
-    pass
-#   s3 = boto3.client('s3')
+    def __init__(self):
+        pass
+
 #   #define connections to boto3 and save file to s3
-#   def save_to_s3():   
-#     boto3.client('s3').upload_file('helloworld.html', 'lmtd-class', 'heyclass.html')
+    def save_to_s3(self):  
+        s3 = boto3.client('s3') 
+        boto3.client('s3').upload_file('hello.html', 'lmtd-class', 'dolma.html')
 
 manager = HtmlMananger()
 manager.create_html()
 manager.save_html_file()
+
+aws = AWSmanager()
+aws.save_to_s3()
